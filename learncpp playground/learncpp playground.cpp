@@ -6,6 +6,32 @@
 #include <iostream>
 #include "pqueue.h"
 
+void memberSelection()
+{
+
+	struct Something
+	{
+		int nValue;
+		float fValue;
+	};
+	
+	Something sSomething;
+	
+	// Member selection using actual struct variable
+	sSomething.nValue = 5;
+
+	// Member selection using reference to struct
+	Something &rsSomething = sSomething;
+	rsSomething.nValue = 5;
+
+	// Member selection using pointer to struct
+	Something *psSomething = &sSomething;
+	(*psSomething).nValue = 5;
+	// or
+	psSomething->nValue = 5;
+
+}
+
 int aSort()
 {
 
@@ -56,18 +82,72 @@ void pointertest()
 	printf("pnarray: %d \n", pnArray[4]);
 	delete[] pnArray;
 
+	// const pointers and pointers to const values
+	// const pointer; pointer cannot change to different value, but the value itself can change
+	int nValue = 5;
+	int nValue2 = 2;
+	int *const pnPtr = &nValue;
+	*pnPtr = 6; // allowed
+	// pnPtr = &nValue2; // not allowed
 
+	// pointer to const value; pointer can change but value it points to cannot
+	// ie: does not actually have to point to constant value, just treats it as such
+	int nValue1 = 5;
+	const int *pnPtr1 = &nValue1;
+	pnPtr1 = &nValue2;
+	// *pnPtr1 = 3; // not allowed
 
+	// can have const pointer to const value
+	const int *const pnPtr2 = &nValue;
 
 }
+
+void referencetest()
+{
+	// references give us a handle to change a variable
+	int nValue = 3;
+	int &rnRef = nValue; // reference to nValue
+	nValue = 6; // nValue is now 6
+	rnRef = 7; // nValue is now 7
+	
+	std::cout << "nvalue: " << nValue << "\n";
+
+	// const ref possible as well; now we cannot change the reference
+	const int &rnRef1 = nValue;
+	// rnRef1 = 3; // illegal since this ref is const
+
+}
+
+void statictest()
+{
+	// static variables 
+	using namespace std;
+	static int s_val = 0; // needs to be called in order for this function to address s_val
+	s_val++; // increments s_val, despite going out of scope
+	cout << "s_val: " << s_val << "\n";
+}
+
+void staticloop()
+{
+	for (int i = 0; i < 10; i++)
+	{
+		statictest();
+	}
+	static int s_val;
+	statictest();
+}
+
+
 
 
 int main()
 {
 	aSort();
 	pointertest();
+	referencetest();
+	staticloop();
 
-	//printf("hello world\n");
+	printf("hello world\n");
 	//system("pause");
 	return 0;
 	
