@@ -5,6 +5,7 @@
 #include <algorithm> // for std::swap, use <utility> instead if C++11
 #include <iostream>
 #include "pqueue.h"
+#include "array_sum.h"
 
 void memberSelection()
 {
@@ -147,8 +148,27 @@ int main()
 	referencetest();
 	staticloop();
 
+	int foo[] = { 4, 6, -7, 30 };
+
+	int a;
+	a = foo[0];
+
+	// since foo is an array, we need to use this
+	int *pa = foo;
+	// pointers are referenced the same ways as arrays, so a[4] is the same is *a(4)
+
+	printf("%d\n",*(pa+1));
+
+	// find max sum
+	a = max_sum(foo, 3);
+	printf("%d\n", a);
+
+
+
+
 	printf("hello world\n");
 	//system("pause");
+	// press ctrl + F5 to run without closing console
 	return 0;
 	
 }
