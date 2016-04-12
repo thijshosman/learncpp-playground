@@ -146,20 +146,34 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="array_sum.h" />
+    <ClInclude Include="constClass.h" />
+    <ClInclude Include="functionPointers.h" />
     <ClInclude Include="pqueue.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="staticClass.h" />
+    <ClInclude Include="staticMemberClass.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="testClass.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="array_sum.cpp" />
+    <ClCompile Include="constClass.cpp" />
+    <ClCompile Include="functionPointers.cpp" />
     <ClCompile Include="learncpp playground.cpp" />
     <ClCompile Include="pqueue.cpp" />
+    <ClCompile Include="staticClass.cpp" />
+    <ClCompile Include="staticMemberClass.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="testClass.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="learncpp playground.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

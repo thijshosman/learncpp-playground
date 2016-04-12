@@ -30,6 +30,24 @@
     <ClInclude Include="array_sum.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="testClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="constClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="staticClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="staticMemberClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="functionPointers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -44,5 +62,25 @@
     <ClCompile Include="array_sum.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="testClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="constClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="staticClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="staticMemberClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="functionPointers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="learncpp playground.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

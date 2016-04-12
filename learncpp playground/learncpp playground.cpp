@@ -6,6 +6,11 @@
 #include <iostream>
 #include "pqueue.h"
 #include "array_sum.h"
+#include "testClass.h"
+#include "constClass.h"
+#include "staticClass.h"
+#include "staticMemberClass.h"
+#include "functionPointers.h"
 
 void memberSelection()
 {
@@ -139,6 +144,85 @@ void staticloop()
 }
 
 
+void lesson810() // const classes
+{
+	// 3 ways to initialize const classes
+	const int value1 = 5; // explicit initialization
+	const int value2(7); // implicit initialization
+	const int value3{ 9 }; // uniform initialization (C++11)
+
+	const constClass something; // calls default constructor
+	something.print();
+}
+
+int staticClass::s_value = 1; // have to define static members once, outside of class definition or functions
+//const int staticClass::s_c_value; // not needed, since const static ints/enums can be declared inside definition
+int staticClass::s_idGenerator = 0; // initialize idGenerator with id 0
+
+void lesson811() // static values 
+{
+	
+	staticClass astaticClass1; // constructor adds 1 to s_value
+	printf("s_value class 1: %d\n", astaticClass1.s_value);
+
+	printf("s_value class: %d\n", staticClass::s_value);
+
+	staticClass astaticClass2; // idem
+	printf("s_value class 2: %d\n", astaticClass2.s_value);
+
+	staticClass first;
+	staticClass second;
+	
+	//std::cout << first.getID() << '\n';
+	//std::cout << second.getID() << '\n';
+
+}
+
+int staticMemberClass::s_nextID = 1;
+int staticMemberClass::getNextID() { return s_nextID++; }
+
+
+void lesson812() // static member functions
+{
+	for (int count = 0; count< 5; ++count)
+	{
+		std::cout << "the next ID is: " << staticMemberClass::getNextID() << "\n";
+	}
+}
+
+void lesson78() // function pointers
+{
+	// fcnPtr is a pointer to a function that takes no arguments and returns an integer
+	int(*fcnPtr)(); //function pointer with no arguments that returns int
+	int(*fcnPtr1)(int); //function pointer with int argument that returns int
+
+	// assign function to pointer
+	//NB1: don't use foo(), but foo
+	//NB2: function signnature (arguments and return type) have to match
+	fcnPtr = foo;
+	fcnPtr1 = goo;
+	
+	// call function
+	(*fcnPtr1)(5); // call function foo(5) through fcnPtr explicitly
+	fcnPtr1(5); // or implicitly
+
+	printf("functionpointer: %d\n",fcnPtr());
+
+	// function pointers an be used for callback
+
+	int array[9] = { 3, 7, 9, 5, 6, 1, 8, 2, 4 };
+
+	// Sort the array in descending order using the descending() function
+	selectionSort(array, 9, descending);
+	printArray(array, 9);
+
+	// Sort the array in ascending order using the ascending() function
+	selectionSort(array, 9, ascending);
+	printArray(array, 9);
+
+
+}
+
 
 
 int main()
@@ -163,7 +247,31 @@ int main()
 	a = max_sum(foo, 3);
 	printf("%d\n", a);
 
+	// ## classes and objects ##
 
+	// create object on the stack
+	testClass myClass1(1,1);
+	myClass1.fun1(1); // fun1 is member of myClass1
+	
+	// create pointer
+	testClass *myClass2= new testClass(2,1); // on the heap
+	myClass2->fun1(1); // fun1 is member of class pointed t oby myClass2
+	(*myClass2).fun1(1); // same, but ugly
+
+	// or create array of objects, since an array is just a pointer
+	testClass *objArr = new testClass[2]{ { 2,5 },{ 3,6 } };
+	
+	// const testClass 
+	//lesson810();
+
+	// static member variables
+	//lesson811(); 
+
+	// static methods
+	//lesson812();
+
+	// function pointers
+	lesson78();
 
 
 	printf("hello world\n");
